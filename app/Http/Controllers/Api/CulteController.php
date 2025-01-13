@@ -40,7 +40,12 @@ class CulteController extends Controller
      */
     public function show(Culte $culte)
     {
-        //
+                $culteShow = Culte::findOrFail($culte->id);
+
+            return response()->json([
+                    'data'=> ['culte' => $culteShow],
+                    ]); 
+
     }
 
     /**

@@ -26,6 +26,8 @@ return new class extends Migration
             $table->id();
             $table->string('nom')->unique();
             $table->string('description')->nullable();
+            $table->string('code_couleur')->nullable();
+            $table->string('couleur')->nullable();
             $table->timestamps();
 
         });
@@ -66,6 +68,7 @@ return new class extends Migration
         Schema::create('attendances', function (Blueprint $table) {
             $table->timestamp('date_presence');
             $table->foreignId('eglise_id')->nullable()->index();
+            $table->foreignId('tribu_id')->nullable()->index();
             $table->foreignId('culte_id')->nullable()->index();
             $table->foreignId('membre_id')->nullable()->index();
             $table->foreignId('user_id')->nullable()->index(); //celui qui a enregistré.

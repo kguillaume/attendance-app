@@ -50,6 +50,13 @@ class MembreController extends Controller
     public function show(Member $member)
     {
         //
+            $memberShow = Member::findOrFail($member->id);
+                    return response()->json([
+                    'data'=> ['member' => $memberShow],
+                    ]);
+
+                
+        
     }
 
     /**

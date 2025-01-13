@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Attendance;
+use App\Models\Eglise;
+use App\Models\Tribu;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreAttendanceRequest;
 use App\Http\Requests\UpdateAttendanceRequest;
@@ -39,7 +41,10 @@ class AttendanceController extends Controller
      */
     public function show(Attendance $attendance)
     {
-        //
+        $attendanceShow = Attendance::findOrFail($attendance->id);
+        return response()->json([
+            'data'=> ['attendance' => $attendanceShow],
+            ]);
     }
 
     /**
@@ -56,5 +61,9 @@ class AttendanceController extends Controller
     public function destroy(Attendance $attendance)
     {
         //
+    }
+
+    public function statistiques(Eglise $eglise, Tribu $tribu, DateTime $dateDebut = null, DateTime $dateFin = null){
+        //Statisttiques filtre par eglise et tribu 
     }
 }

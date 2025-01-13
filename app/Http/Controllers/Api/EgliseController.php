@@ -50,6 +50,10 @@ class EgliseController extends Controller
     public function show(Eglise $eglise)
     {
         //
+        $egliseShow = Eglise::findOrFail($eglise->id);
+        return response()->json([
+            'data'=> ['eglise' => $egliseShow],
+            ]);
     }
 
     /**

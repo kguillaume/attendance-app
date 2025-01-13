@@ -45,7 +45,10 @@ class TribuController extends Controller
      */
     public function show(Tribu $tribu)
     {
-        //
+        $tribuShow = Tribu::findOrFail($tribu->id);
+        return response()->json([
+            'data'=> ['tribu' => $tribuShow],
+            ]);
     }
 
     /**
